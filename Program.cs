@@ -1,6 +1,5 @@
-
 using Microsoft.EntityFrameworkCore;
-using RealEstateApi.Data;
+using Almustashar_app;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +8,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
+    options.UseNpgsql(
+        builder.Configuration.GetConnectionString("DefaultConnection")
+    )
 );
 
 var app = builder.Build();
